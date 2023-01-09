@@ -1,7 +1,6 @@
 Supervised Learning Techniques Course Project
 ================
-Leonid Shpaner
-January 1, 2023
+Leonid Shpaner - January 1, 2023
 
 ``` r
 # function for loading necessary libraries and installing them if they have not
@@ -1269,16 +1268,15 @@ $$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP}+\text{TN}+\text{FP}+\
 accepted a government offer to purchase their home, how many actually
 accepted? It is calculated as follows. </font>
 
-$$\text{Precision} = \frac{\text{TP}}{\text{TP}+\text{FP}}$$
-<font color="blue"> Recall (sensitivity) measures the true positive rate
-(TPR), which is the number of correct predictions in the
-<font color="black"> `Accept` </font> class divided by the total number
-of <font color="black"> `Accept` </font> instances. It is calculated as
-follows: </font>
+$$\text{Precision} = \frac{\text{TP}}{\text{TP}+\text{FP}}$$ **Recall
+(sensitivity) measures the true positive rate (TPR), which is the number
+of correct predictions in the <font color="black"> `Accept` </font>
+class divided by the total number of <font color="black"> `Accept`
+</font> instances. It is calculated as follows:**
 
-$$\text{Recall} = \frac{\text{TP}}{\text{TP}+\text{FN}}$$
-<font color="blue"> The *f1*-score is the harmonic mean of precision and
-recall, and is calculated as follows: </font>
+$$\text{Recall} = \frac{\text{TP}}{\text{TP}+\text{FN}}$$ **The
+*f1*-score is the harmonic mean of precision and recall, and is
+calculated as follows:** <br>
 
 $$f1 = \frac{\text{TP}}{\text{TP}+\frac{1}{2}\text{(FP+FN)}}$$
 
