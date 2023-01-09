@@ -83,8 +83,8 @@ this question, please give us the linear discriminate model you have
 developed.
 </li>
 
-<font color="blue"> The dataset is inspected and the categorical classes
-of <font color="black"> `Acceptable` </font> and <font color="black">
+**The dataset is inspected and the categorical classes of
+<font color="black"> `Acceptable` </font> and <font color="black">
 `Unacceptable` </font> are cast to the Performance Score
 (<font color="black"> `PerfScoreID` </font>) in a new column named
 <font color="black"> `CollapseScore` </font>. However, since supervised
@@ -94,7 +94,7 @@ created. Extraneous or otherwise not useful columns like
 <font color="black"> `Employee ID` </font>, <font color="black">
 `CollapseScore` </font>, and <font color="black"> `Score` </font> are
 removed such that a numerical only dataframe is created for subsequent
-distribution analysis. </font> </font>
+distribution analysis. </font>**
 
 ``` r
 # read in the data
@@ -148,12 +148,12 @@ Table continues below
 hr_data_numeric <- subset(hr_data, select = -c(EmpID, CollapseScore, Score))
 ```
 
-<font color="blue"> The histogram distributions below do not yield or
-uncover any near-zero-variance predictors, but it is worth noting that
+**The histogram distributions below do not yield or uncover any
+near-zero-variance predictors, but it is worth noting that
 <font color="black"> `Termd` </font> has only two class labels.
 <font color="black"> `MechanicalApt` </font> and <font color="black">
 `VerbalApt` </font> exhibit normality; other variables approach the same
-trend. </font>
+trend. </font>**
 
 ``` r
 # create function for plotting histograms to check for near-zero variance 
@@ -189,12 +189,11 @@ nearzerohist(hr_data_numeric, x = 2, y = 3)
 
     ## [1] "There are no near-zero variance predictors."
 
-<font color="blue"> Examining the <font color="black"> `Score` </font>
-column separately yields an imbalanced dataset where 172
-<font color="black"> `Acceptable` </font> cases outweigh the 21
-<font color="black"> `Unacceptable` </font> classes. However, no
-solution is rendered for this outcome. The data is treated as-is.
-</font>
+**Examining the <font color="black"> `Score` </font> column separately
+yields an imbalanced dataset where 172 <font color="black"> `Acceptable`
+</font> cases outweigh the 21 <font color="black"> `Unacceptable`
+</font> classes. However, no solution is rendered for this outcome. The
+data is treated as-is.**
 
 ``` r
 # function for generating class balance table and barplot
@@ -238,21 +237,20 @@ Explain the variables you decided to use in the model described above
 and why.
 </li>
 
-<font color="blue"> The employee’s hiring status <font color="black">
-`EmpStatusID` </font> in conjunction with the employee’s satisfaction
+**The employee’s hiring status <font color="black"> `EmpStatusID`
+</font> in conjunction with the employee’s satisfaction
 <font color="black"> `EmpSatisfaction` </font> and average aptitude
-score were used in the model. </font>
+score were used in the model.**
 
-<font color="blue"> Averaging the mechanical and verbal scores row over
-row creates a new <font color="black"> `Aptitude` </font> column with
-these values. Mechanical and verbal aptitude scores are omitted because
-of their high between-predictor relationships. <font color="black">
-`MechanicalApt` </font> vs. <font color="black"> `VerbalApt` </font>
-yields an *r* = 0.96. Once the scores are averaged and passed into one
-column, the problem of multicollinearity is removed.
-<font color="black"> `Termd` </font> is also omitted because its
-correlation with <font color="black"> `EmpStatusID` </font> is *r* =
-0.96. </font>
+**Averaging the mechanical and verbal scores row over row creates a new
+<font color="black"> `Aptitude` </font> column with these values.
+Mechanical and verbal aptitude scores are omitted because of their high
+between-predictor relationships. <font color="black"> `MechanicalApt`
+</font> vs. <font color="black"> `VerbalApt` </font> yields an *r* =
+0.96. Once the scores are averaged and passed into one column, the
+problem of multicollinearity is removed. <font color="black"> `Termd`
+</font> is also omitted because its correlation with
+<font color="black"> `EmpStatusID` </font> is *r* = 0.96.**
 
 ``` r
 # create function to plot correlation matrix and establish multicollinearity
@@ -292,10 +290,9 @@ multicollinearity(hr_data[c(1:7)])
     ##  MechanicalApt 
     ##  Termd
 
-<font color="blue"> Variance Inflation Factor (VIF) scores confirm
-similar behavior, exhibiting high multicollinearity once a threshold of
-five is reached and surpassed. A linear model (lm) is used to test this
-behavior. </font>
+**Variance Inflation Factor (VIF) scores confirm similar behavior,
+exhibiting high multicollinearity once a threshold of five is reached
+and surpassed. A linear model (lm) is used to test this behavior.**
 
 ``` r
 # use generalized linear model to determine confirm multicollinearity w/ VIF
@@ -346,11 +343,10 @@ paste('\n', unlist(highCorr)))
     ##  The following variables should be omitted: 
     ## 
 
-<font color="blue"> The Score vs. Aptitude scatterplot below exhibits a
-moderate correlation of *r* = 0.62. Employee satisfaction exhibits a
-much weaker relationship of *r* = 0.26, and there is almost no
-relationship between Score and Employee Status ID where *r* = -0.067.
-</font>
+**The Score vs. Aptitude scatterplot below exhibits a moderate
+correlation of *r* = 0.62. Employee satisfaction exhibits a much weaker
+relationship of *r* = 0.26, and there is almost no relationship between
+Score and Employee Status ID where *r* = -0.067.**
 
 ``` r
 # create function for plotting correlations between variables  
@@ -393,8 +389,8 @@ plot_grid(plot1, plot2, plot3, labels = 'AUTO', ncol = 3, align = '')
     ## `geom_smooth()` using formula = 'y ~ x'
 
 <img src="figs/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
-<font color="blue"> Fitting the linear discriminant analysis model
-produces the following results. </font>
+**Fitting the linear discriminant analysis model produces the following
+results.**
 
 ``` r
 par(mar = c(4, 2, 0, 0)) # fix plot margins
@@ -457,11 +453,11 @@ predictions part of the dataset.
 
 <br>
 
-<font color="blue"> A generalized linear model is fitted accordingly, a
-column of predictions is appended to the dataframe, and a cutoff value
-is determined accordingly. Individual 5 has unacceptable/unsatisfactory
+**A generalized linear model is fitted accordingly, a column of
+predictions is appended to the dataframe, and a cutoff value is
+determined accordingly. Individual 5 has unacceptable/unsatisfactory
 performance, and the model predicts the same with a probability of
-0.471, which is below the cutoff of 0.737. </font>
+0.471, which is below the cutoff of 0.737.**
 
 ``` r
 # Fit a regression model
@@ -532,10 +528,9 @@ logit <- lrm(Score ~ MechanicalApt + VerbalApt, data = hr_data); logit
     ##  VerbalApt      -0.0865  0.0743 -1.16  0.2443  
     ## 
 
-<font color="blue"> The linear discriminant analysis model does not use
-mechanical aptitude and/or verbal aptitude as standalone independent
-variables. The scores are averaged to create one column for general
-aptitude. </font>
+**The linear discriminant analysis model does not use mechanical
+aptitude and/or verbal aptitude as standalone independent variables. The
+scores are averaged to create one column for general aptitude.**
 
 <li>
 Build an ordered logit model for the full four categories for
@@ -623,9 +618,9 @@ pandoc.table(individual2, style = 'simple', split.table = Inf, round = 4)
 
 </ol>
 
-<br> <font color="blue"> The respective probabilities that individual
-two will be in each of the four performance categories are 0.0471702,
-0.0824139, 0.7875144, 0.0829015. </font>
+<br> **The respective probabilities that individual two will be in each
+of the four performance categories are 0.0471702, 0.0824139, 0.7875144,
+0.0829015.**
 
 ## Part Two
 
@@ -733,8 +728,8 @@ using Naïve Bayes activity you completed in R.
 
 <br>
 
-<font color="blue"> The probability that individual 10 will evolve into
-each of the four probability classes if hired is as follows: </font>
+**The probability that individual 10 will evolve into each of the four
+probability classes if hired is as follows:**
 
 ``` r
 # table the probabilities of each respective class for the individual
@@ -819,15 +814,15 @@ str(hrdata_groups) # print out the structure of the dataframe
     ##  $ MechanicalApt   : num  174.6 110.6 148.6 49.1 42.2 ...
     ##  $ VerbalApt       : num  187.2 102.7 156.1 44.9 41.6 ...
 
-<font color="blue"> Before modeling can commence, it is important to
-establish between-predictor relationships and the potential presence of
+**Before modeling can commence, it is important to establish
+between-predictor relationships and the potential presence of
 multicollinearity, because this is a refined dataset from a new .csv
 file. The classification trees model is developed from all variables
 except for mechanical aptitude and verbal aptitude. Verbal aptitude
 exhibits a noticeably high correlation of *r* = 0.96 with mechanical
 aptitude. However, rather than omitting this one variable, both aptitude
 columns are replaced with a new column by the name of aptitude which has
-been averaged from their results.
+been averaged from their results.**
 
 ``` r
 # Examine between predictor correlations/multicollinearity
@@ -839,11 +834,10 @@ cat(' The following variables should be omitted: \n', paste(unlist(highCorr)))
     ##  The following variables should be omitted: 
     ##  VerbalApt
 
-<font color="blue"> <font color="black"> `VerbalApt` </font> exhibits
-multicollinearity, so it is averaged with <font color="black">
-`MechanicalApt` </font>, just like in part one. A replacement column
-called <font color="black"> Aptitude </font> is once again created on
-this refined dataset. </font> </font>
+**<font color="black"> `VerbalApt` </font> exhibits multicollinearity,
+so it is averaged with <font color="black"> `MechanicalApt` </font>,
+just like in part one. A replacement column called <font color="black">
+Aptitude </font> is once again created on this refined dataset.**
 
 ``` r
 # create aptitude from averaged MechanicalApt and VerbalApt scores
@@ -852,8 +846,8 @@ hrdata_groups$Aptitude <- rowMeans(hrdata_groups[, c(9, 10)], na.rm = TRUE)
 hrgroups_final <- hrdata_groups[, c(-9, -10)] # finalize dataframe for modeling
 ```
 
-<font color="blue"> Between-predictor relationships are once again
-re-examined to ensure no residual multicollinearity is detected. </font>
+**Between-predictor relationships are once again re-examined to ensure
+no residual multicollinearity is detected.**
 
 ``` r
 # Re-examine between predictor correlations/multicollinearity
@@ -913,25 +907,24 @@ In the space below, describe how well your model performs.
 
 <br>
 
-<font color="blue"> Whenever a <font color="black"> `CollapseScore`
-</font> is less than or equal to zero, it is classified as unacceptable
-or unsatisfactory performance. Thus, under this umbrella category,
-aptitude scores less than or equal to 53.89 (level 1) exhibit no error
-(third node), where *n* = 8. Aptitude scores greater than 53.89066
-(level 2) exhibit no error, where *n* = 13. </font>
+**Whenever a <font color="black"> `CollapseScore` </font> is less than
+or equal to zero, it is classified as unacceptable or unsatisfactory
+performance. Thus, under this umbrella category, aptitude scores less
+than or equal to 53.89 (level 1) exhibit no error (third node), where
+*n* = 8. Aptitude scores greater than 53.89066 (level 2) exhibit no
+error, where *n* = 13.**
 
-<font color="blue"> Whenever a <font color="black"> `CollapseScore`
-</font> is greater than 0, employee performance is classified as
-acceptable or satisfactory. Under this umbrella category, aptitude
-scores less than or equal to 154.50 reach a node level of 3.052, with an
-error of 7.6, where *n* = 154 observations. Aptitude scores greater than
-154.50 reach a higher node level of 3.89, where there are *n* = 18
-observations, and a lower error rate of 1.8. </font>
+**Whenever a <font color="black"> `CollapseScore` </font> is greater
+than 0, employee performance is classified as acceptable or
+satisfactory. Under this umbrella category, aptitude scores less than or
+equal to 154.50 reach a node level of 3.052, with an error of 7.6, where
+*n* = 154 observations. Aptitude scores greater than 154.50 reach a
+higher node level of 3.89, where there are *n* = 18 observations, and a
+lower error rate of 1.8.**
 
-<font color="blue"> There are three inner nodes and four terminal nodes,
-with a correct classification of data points at approximately 11%. The
-performance is low, and this model warrants iterative refinement.
-</font>
+**There are three inner nodes and four terminal nodes, with a correct
+classification of data points at approximately 11%. The performance is
+low, and this model warrants iterative refinement.**
 
 </ol>
 
@@ -1006,21 +999,20 @@ nearzerohist(acquisition[c(-12)], x = 4, y = 3)
     ## [1] "There are no near-zero variance predictors."
 
 <img src="figs/unnamed-chunk-31-1.png" style="display: block; margin: auto;" />
-<font color="blue"> Inspecting the dataframe for near zero variance
-predictors from a visual standpoint alone identifies current market
-value <font color="black"> `CurMarketValue` </font> to be a variable
-that exhibits such behavior. However, the <font color = "black">
+**Inspecting the dataframe for near zero variance predictors from a
+visual standpoint alone identifies current market value
+<font color="black"> `CurMarketValue` </font> to be a variable that
+exhibits such behavior. However, the <font color = "black">
 `nearZeroVar` </font> function from the <font color="black"> `caret`
 </font> library does not expose such variables. Near zero variance
 measures the fraction of unique values in the columns across the
-dataset. </font>
+dataset.**
 
-<font color="blue"> Moreover, the correlation matrix does not expose any
-sources of high between-predictor relationships (beyond the cutoff point
-of *r* = 0.75). This relegates the variable selection process to
-Principal Component Analysis (PCA), but this is a dimensionality
-reduction technique; there are only 12 variables and 1,531 rows of data.
-</font>
+**Moreover, the correlation matrix does not expose any sources of high
+between-predictor relationships (beyond the cutoff point of *r* = 0.75).
+This relegates the variable selection process to Principal Component
+Analysis (PCA), but this is a dimensionality reduction technique; there
+are only 12 variables and 1,531 rows of data.**
 
 ``` r
 par(mfrow = c(1, 1)) # fix plotting space from prior graph
@@ -1032,11 +1024,11 @@ multicollinearity(acquisition)
     ##  The following variables should be omitted: 
     ## 
 
-<font color="blue"> Casting the target <font color="black"> `Accept`
-</font> variable to a factor is done to categorize the data. There are
-enough rows in this dataset to carry out a train-test split, and so it
-is done, with 70% partitioned into the training set, and the remaining
-30% into the test set. </font>
+**Casting the target <font color="black"> `Accept` </font> variable to a
+factor is done to categorize the data. There are enough rows in this
+dataset to carry out a train-test split, and so it is done, with 70%
+partitioned into the training set, and the remaining 30% into the test
+set.**
 
 ``` r
 acquisition$Accept <- as.factor(acquisition$Accept)
@@ -1073,11 +1065,11 @@ target <- train_acquisition[, c(12)] # extract dep. var. from train set
 target <- as.factor(target) # cast target as factor
 ```
 
-<font color="blue"> Since the <font color="black"> `e1071` </black>
-package does not allow for a printout of variable importance
-(<font color="black"> `varImpt()` </font>) for feature selection, the
-<font color="black"> `caret` </font> package is used to accomplish this
-task, and the results are shown below. </font> </font>
+**Since the <font color="black"> `e1071` </black> package does not allow
+for a printout of variable importance (<font color="black"> `varImpt()`
+</font>) for feature selection, the <font color="black"> `caret` </font>
+package is used to accomplish this task, and the results are shown
+below.**
 
 ``` r
 # Support Vector Machines via caret
@@ -1095,13 +1087,14 @@ ggplot2::ggplot(varImp(object = model_svm)) +
 ```
 
 <img src="figs/unnamed-chunk-36-1.png" style="display: block; margin: auto;" />
-<font color="blue"> The model’s cost and kernel hyperparameters are
-tuned over the training data with a 10-fold cross validation sampling
-method. The optimal hyperparameter values are shown in table below.
-<font color="black"> `Price75` </font> and <font color="black">
-`Price125` </font> are the top two variables surpassing a score of 80 in
+<br>
+
+**The model’s cost and kernel hyperparameters are tuned over the
+training data with a 10-fold cross validation sampling method. The
+optimal hyperparameter values are shown in table below. `Price75` and
+`Price125` are the top two variables surpassing a score of 80 in
 importance and are thus selected for the soft-margin support vector
-machine. </font> </font>
+machine.**
 
 ``` r
 train_df <- train_acquisition[, c(8, 11, 12)]
@@ -1171,8 +1164,8 @@ summary(tune.out)
     ## 20 1e+02     radial 0.3682860 0.02805209
     ## 21 1e+03     radial 0.3682860 0.02805209
 
-<font color="blue"> These hyperparameters are used to create a soft
-margin support vector machine. </font>
+**These hyperparameters are used to create a soft margin support vector
+machine.**
 
 ``` r
 # Construct Soft Margin SVM
@@ -1195,8 +1188,7 @@ print(acquisition_result)
     ## 
     ## Number of Support Vectors:  802
 
-<font color="blue"> The classification results are visualized below.
-</font>
+**The classification results are visualized below.**
 
 ``` r
 # Visualize the SVM decision boundary using only the training data using price75
@@ -1259,14 +1251,13 @@ conf_matrix(df1 = acquisition_result, df2 = test_df, feat = test_df$Accept,
 
 Confusion Matrix for Test Set
 
-<font color="blue"> The confusion matrix is used to obtain the first
-effective measure of model performance (accuracy) using the following
-equation. </font>
+**The confusion matrix is used to obtain the first effective measure of
+model performance (accuracy) using the following equation.**
 
 $$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP}+\text{TN}+\text{FP}+\text{FN}}$$
-<font color="blue"> Precision (specificity) measures out of everyone who
-accepted a government offer to purchase their home, how many actually
-accepted? It is calculated as follows. </font>
+**Precision (specificity) measures out of everyone who accepted a
+government offer to purchase their home, how many actually accepted? It
+is calculated as follows.**
 
 $$\text{Precision} = \frac{\text{TP}}{\text{TP}+\text{FP}}$$ **Recall
 (sensitivity) measures the true positive rate (TPR), which is the number
@@ -1354,15 +1345,15 @@ How good was your model at correctly predicting who would and who would
 not accept the offer?
 </li>
 
-<br> <font color="blue"> Using the test data (30% hold out), the model’s
-accuracy is only 15% improvement above baseline, coming out to 65%.
-However, the model’s ability to correctly classify the
-<font color="black"> `Accept` </font> class is effectively high at 95%
-specificity. The ROC Curve calculates an AUC (area under the curve)
-score of \~64%, so model performance is quite low. Moreover, the ROC
-Curve below shows that as the true positive rate increases, so does the
-false positive rate, so, for every increase in the false positive rate,
-there is a greater increase in false alarms. </font>
+<br> **Using the test data (30% hold out), the model’s accuracy is only
+15% improvement above baseline, coming out to 65%. However, the model’s
+ability to correctly classify the <font color="black"> `Accept` </font>
+class is effectively high at 95% specificity. The ROC Curve calculates
+an AUC (area under the curve) score of \~64%, so model performance is
+quite low. Moreover, the ROC Curve below shows that as the true positive
+rate increases, so does the false positive rate, so, for every increase
+in the false positive rate, there is a greater increase in false
+alarms.**
 
 ``` r
 test_prob  <- predict(acquisition_result, test_df, type = 'decision')
@@ -1392,9 +1383,9 @@ necessary to do this for each of the problems above. It is essential to
 realize that you will need to do this in practice.
 </li>
 
-<br> <font color="blue"> We are interested in seeing how the model
-performs on unseen data. Thus, we partition the data into a train-test
-split. Ideally, there are enough rows of data to conduct a three-way
+<br> **We are interested in seeing how the model performs on unseen
+data. Thus, we partition the data into a train-test split. Ideally,
+there are enough rows of data to conduct a three-way
 train-validation-test split such that the train-validation set becomes
 the development set. However, we are working with a smaller amount of
 data, so we are using a two-way split, where the training set
@@ -1403,4 +1394,4 @@ remaining 30% is allocated to the test set. Anything can be done
 repeatedly to the development set (e.g., iteration,
 hyperparameterization, experimentation, etc.), as long as the test set
 remains uncontaminated (unseen). Once the model is finalized through the
-training set, it can be predicted on the remaining test set. </font>
+training set, it can be predicted on the remaining test set.**
