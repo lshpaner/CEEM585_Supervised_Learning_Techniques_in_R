@@ -62,19 +62,6 @@ The cutoff value is then computed in r as follows: `cutoff<-0.5(meanunsat+meansa
 If you want to compare what your model says verses whether they were found to be satisfactory or unsatisfactory you may add the prediction to the data frame using `cbind(frame, pred)`. This will make the predictions part of the dataset. </li>
 <br>
 
-<style type="text/css">
-.tg  {border:none;border-collapse:collapse;border-spacing:0;}
-.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
-  padding:10px 5px;word-break:normal;}
-.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-tsde{background-color:#ffffff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:bottom}
-.tg .tg-5w3z{background-color:#ecf4ff;border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-qhnr{background-color:#ecf4ff;border-color:#000000;text-align:center;vertical-align:top}
-.tg .tg-3xi5{background-color:#ffffff;border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-7g6k{background-color:#ffffff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-.tg .tg-ytai{background-color:#ecf4ff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:bottom}
-</style>
 <table class="tg">
 <thead>
   <tr>
