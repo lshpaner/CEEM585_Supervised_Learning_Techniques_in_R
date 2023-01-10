@@ -66,7 +66,6 @@ The cutoff value is then computed in r as follows: `cutoff<-0.5(meanunsat+meansa
 If you want to compare what your model says verses whether they were found to be satisfactory or unsatisfactory you may add the prediction to the data frame using `cbind(frame, pred)`. This will make the predictions part of the dataset. </li>
 <br>
 
-<center>
 <table class="tg">
 <thead>
   <tr>
@@ -99,7 +98,7 @@ If you want to compare what your model says verses whether they were found to be
     <td class="tg-3xi5">Acceptable</td>
     <td class="tg-3xi5">1</td>
     <td class="tg-3xi5">106.7</td>
-    <td class="tg-5w3z">0.7863</td>
+    <td class="tg-5w3z">0.786</td>
   </tr>
   <tr>
     <td class="tg-3xi5">3</td>
@@ -117,7 +116,7 @@ If you want to compare what your model says verses whether they were found to be
     <td class="tg-3xi5">Unacceptable</td>
     <td class="tg-3xi5">0</td>
     <td class="tg-3xi5">46.99</td>
-    <td class="tg-5w3z">0.3852</td>
+    <td class="tg-5w3z">0.385</td>
   </tr>
   <tr>
     <td class="tg-5w3z">5</td>
@@ -126,7 +125,7 @@ If you want to compare what your model says verses whether they were found to be
     <td class="tg-5w3z">Unacceptable</td>
     <td class="tg-5w3z">0</td>
     <td class="tg-5w3z">41.87</td>
-    <td class="tg-qhnr">0.4715</td>
+    <td class="tg-qhnr">0.471</td>
   </tr>
   <tr>
     <td class="tg-3xi5">6</td>
@@ -135,11 +134,11 @@ If you want to compare what your model says verses whether they were found to be
     <td class="tg-3xi5">Acceptable</td>
     <td class="tg-3xi5">1</td>
     <td class="tg-3xi5">131.6</td>
-    <td class="tg-5w3z">0.9764</td>
+    <td class="tg-5w3z">0.976</td>
   </tr>
 </tbody>
 </table>
-</center>
 
+**Individual 5 has unacceptable/unsatisfactory performance, and the model predicts the same with a probability of 0.471, which is below the cutoff of 0.737.**
 
 
