@@ -344,3 +344,16 @@ In the space below, explain the model you developed. It is sufficient to use the
 
 <img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-29-1.png">
 </p>
+
+<li> 
+
+In the space below, describe how well your model performs.  
+
+</li>
+
+**Whenever a `CollapseScore` is less than or equal to zero, it is classified as unacceptable or unsatisfactory performance. Thus, under this umbrella category, aptitude scores less than or equal to 53.89 (level 1) exhibit no error (third node), where *n* = 8. Aptitude scores greater than 53.89066 (level 2) exhibit no error, where *n* = 13.** 
+
+**Whenever a `CollapseScore` is greater than 0, employee performance is classified as acceptable or satisfactory. This, under this umbrella category, aptitude scores less than or equal to 154.50 reach a node level of 3.052, with an error of 7.6, where *n* = 154 observations. Aptitude scores greater than 154.50 reach a higher node level of 3.89, where there are *n* = 18 observations, and a lower error rate of 1.8.** 
+
+**There are three inner nodes and four terminal nodes, with a correct classification of data points at approximately 11%. The performance is low, and this model warrants iterative refinement.** 
+
