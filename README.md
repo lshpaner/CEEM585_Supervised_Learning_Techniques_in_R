@@ -42,6 +42,7 @@ Notice that you have a several variables that might be used as independent varia
 <br>
 
 <li> Explain the variables you decided to use in the model described above and why.  </li>
+<br>
 
 **The employee’s hiring status (`EmpStatusID`) in conjunction with the employee’s satisfaction (`EmpSatisfaction`) and average aptitude score are used in the model.** 
 
@@ -50,8 +51,102 @@ Notice that you have a several variables that might be used as independent varia
 <img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-16-1.png" >
 
 
+<li> The regression model can be used to classify each of the individuals in the dataset. As discussed in the videos, you will need to find the cutoff value for the regression value that separates the unsatisfactory performers from the satisfactory performers. Find this value and determine whether individual 5 is predicted to be satisfactory or not.   
+     
+In R you can use the predict command to use the regression function with the data associated with each individual in the dataset. For example:  `pred=predict(model, frame)` stores the predicted values from the regression function into the variable pred when the regression model has been assigned to the variable model as in this statement: `model <-lm(dependent variable ~ independent variable 1+ independent variable 2+…, data=frame).` 
+    
+You may then find the mean value of the regression for all observations of unsatisfactory employees using the command `meanunsat=mean(pred[frame$CollapseScore==0])`.  
 
+The cutoff value is then computed in r as follows: `cutoff<-0.5(meanunsat+meansat)`.   
+    
+If you want to compare what your model says verses whether they were found to be satisfactory or unsatisfactory you may add the prediction to the data frame using `cbind(frame, pred)`. This will make the predictions part of the dataset. </li>
+<br>
 
+<style type="text/css">
+.tg  {border:none;border-collapse:collapse;border-spacing:0;}
+.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-tsde{background-color:#ffffff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:bottom}
+.tg .tg-5w3z{background-color:#ecf4ff;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-qhnr{background-color:#ecf4ff;border-color:#000000;text-align:center;vertical-align:top}
+.tg .tg-3xi5{background-color:#ffffff;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-7g6k{background-color:#ffffff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-ytai{background-color:#ecf4ff;border-color:inherit;font-weight:bold;text-align:center;vertical-align:bottom}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-3xi5" colspan="7">    <span style="color:#CB0000">  </span><span style="color:#3531FF">Mean of Satisfactory Results = 0.9340495</span><br><span style="color:#3531FF">                                  Mean of Unsatisfactory Results = 0.5401660                                </span><br><span style="color:#3531FF">                                Cutoff Value = 0.7371078</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-7g6k">Individual #</td>
+    <td class="tg-tsde">EmpStatusID</td>
+    <td class="tg-tsde">EmpSatisfaction</td>
+    <td class="tg-tsde">CollapseScore</td>
+    <td class="tg-tsde">Score</td>
+    <td class="tg-tsde">Aptitude</td>
+    <td class="tg-ytai">Preds</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">5</td>
+    <td class="tg-3xi5">Acceptable</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">180.9</td>
+    <td class="tg-5w3z">1.315</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">2</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">3</td>
+    <td class="tg-3xi5">Acceptable</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">106.7</td>
+    <td class="tg-5w3z">0.7863</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">3</td>
+    <td class="tg-3xi5">5</td>
+    <td class="tg-3xi5">4</td>
+    <td class="tg-3xi5">Acceptable</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">152.3</td>
+    <td class="tg-5w3z">1.104</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">4</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">2</td>
+    <td class="tg-3xi5">Unacceptable</td>
+    <td class="tg-3xi5">0</td>
+    <td class="tg-3xi5">46.99</td>
+    <td class="tg-5w3z">0.3852</td>
+  </tr>
+  <tr>
+    <td class="tg-5w3z">5</td>
+    <td class="tg-5w3z">1</td>
+    <td class="tg-5w3z">5</td>
+    <td class="tg-5w3z">Unacceptable</td>
+    <td class="tg-5w3z">0</td>
+    <td class="tg-5w3z">41.87</td>
+    <td class="tg-qhnr">0.4715</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">6</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">4</td>
+    <td class="tg-3xi5">Acceptable</td>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">131.6</td>
+    <td class="tg-5w3z">0.9764</td>
+  </tr>
+</tbody>
+</table>
 
 
 
