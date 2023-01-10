@@ -168,6 +168,8 @@ Construct a logit model using the two performance groups. Compare this model and
 
 </center>
 
+**The linear discriminant analysis model does not use mechanical aptitude and/or verbal aptitude as standalone independent variables. The scores are averaged to create one column for general aptitude.**  
+
 <li>  
 
 Build an ordered logit model for the full four categories for performance. When you call the function `lrm()` you will use the original categories `PerScoreID`. What is the probability that individual two is in each of the four performance categories? You can use the function `predict()` to do this. The form of the call is `predict(name of the model you used when you created the model, data=frame, type=”fitted.ind”)`.  
