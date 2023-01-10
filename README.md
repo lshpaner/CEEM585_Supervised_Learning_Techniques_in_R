@@ -64,7 +64,7 @@ You may then find the mean value of the regression for all observations of unsat
 The cutoff value is then computed in r as follows: `cutoff<-0.5(meanunsat+meansat)`.   
     
 If you want to compare what your model says verses whether they were found to be satisfactory or unsatisfactory you may add the prediction to the data frame using `cbind(frame, pred)`. This will make the predictions part of the dataset. </li>
-<br>
+
 
 <table class="tg">
 <thead>
