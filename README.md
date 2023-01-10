@@ -9,7 +9,7 @@
 ## Part One
 ### Building A Model
 
-## Instructions
+## Instructions:  
 In this project, you will: 
 - Use linear discriminant analysis.  
 - Build a logit model and an ordered logit model.  
