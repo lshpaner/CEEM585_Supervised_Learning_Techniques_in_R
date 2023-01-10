@@ -318,21 +318,26 @@ In the space below, explain the model you developed. It is sufficient to use the
 <br>
 **Before modeling can commence, it is important to establish between-predictor relationships and the potential presence of multicollinearity, because this is a refined dataset from a new .csv file. The classification trees model is developed from all variables except for mechanical aptitude and verbal aptitude. Verbal aptitude exhibits a noticeably high correlation of r = 0.96 with mechanical aptitude. However, rather than omitting this one variable, both aptitude columns are replaced with a new column by the name of aptitude which has been averaged from their results.**
 
+
 <center>
 
-<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:fit-content;border-width:.1em .1em .1em .8em;padding:.0em .0em;"><pre style="margin: 0; text-align: left; line-height: 125%"><span style="color: #000000">&#39;data.frame&#39;:	1531 obs. of  12 variables:</span>
-<span style="color: #000000"> $ Distance      : num  162.75 108.26 4.55 81.28 183.21 ...</span>
-<span style="color: #000000"> $ Floodplain    : int  1 1 1 1 1 1 1 1 1 1 ...</span>
-<span style="color: #000000"> $ HomeTenure    : int  1 14 19 37 9 57 11 65 1 25 ...</span>
-<span style="color: #000000"> $ Education345  : int  1 0 1 1 1 0 0 0 1 1 ...</span>
-<span style="color: #000000"> $ CurMarketValue: int  650000 30000 50000 78000 127300 35000 400000 80000 360000 300000 ...</span>
-<span style="color: #000000"> $ After         : int  0 0 0 0 0 0 0 0 0 0 ...</span>
-<span style="color: #000000"> $ Price100      : int  1 1 1 1 1 1 1 1 1 1 ...</span>
-<span style="color: #000000"> $ Price75       : int  0 0 0 0 0 0 0 0 0 0 ...</span>
-<span style="color: #000000"> $ Price90       : int  0 0 0 0 0 0 0 0 0 0 ...</span>
-<span style="color: #000000"> $ Price110      : int  0 0 0 0 0 0 0 0 0 0 ...</span>
-<span style="color: #000000"> $ Price125      : int  0 0 0 0 0 0 0 0 0 0 ...</span>
-<span style="color: #000000"> $ Accept        : int  0 0 0 1 0 1 0 0 0 0 ...</span>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:fit-content;border-width:.1em .1em .1em .8em;padding:.0em .0em;"><pre style="margin: 0; text-align: left; line-height: 125%"><span style="color: #000000">Model formula:</span>
+<span style="color: #000000">PerfScoreID ~ EmpStatusID + CollapseScore + PayRate + Age + JobTenure + </span>
+<span style="color: #000000">    EngagementSurvey + EmpSatisfaction + Aptitude</span>
+
+<span style="color: #000000">Fitted party:</span>
+<span style="color: #000000">[1] root</span>
+<span style="color: #000000">|   [2] CollapseScore &lt;= 0</span>
+<span style="color: #000000">|   |   [3] Aptitude &lt;= 53.89066: 1.000 (n = 8, err = 0.0)</span>
+<span style="color: #000000">|   |   [4] Aptitude &gt; 53.89066: 2.000 (n = 13, err = 0.0)</span>
+<span style="color: #000000">|   [5] CollapseScore &gt; 0</span>
+<span style="color: #000000">|   |   [6] Aptitude &lt;= 154.50311: 3.052 (n = 154, err = 7.6)</span>
+<span style="color: #000000">|   |   [7] Aptitude &gt; 154.50311: 3.889 (n = 18, err = 1.8)</span>
+
+<span style="color: #000000">Number of inner nodes:    3</span>
+<span style="color: #000000">Number of terminal nodes: 4</span>
+<span style="color: #000000">Correct Classification of Data Point: 0.1088083null device </span>
 </pre></div>
 
-</center> 
+</center>
+
