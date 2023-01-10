@@ -268,3 +268,12 @@ Using only the mechanical aptitude score, use Naïve Bayes to predict the perfor
 </pre></div>
 
 </center>
+
+<li>	
+
+Using this modeling approach, what is your assessment of the probability that individual 10 will evolve into each of the four probability classes if hired? This can be done using 
+the model created above and the `pred()` function.  
+
+The arguments for that function are the model name, data and for type use “raw”. This question is parallel to the Practice using Naïve Bayes activity you completed in R.  
+
+</li>
