@@ -401,4 +401,12 @@ $$Recall = \frac{TP}{TP+FN}$$
 
 $$f1 = \frac{TP}{TP+\frac{1}{2}{(FP+FN)}}$$
 
+**Using the test data (30% hold out), the model’s accuracy is only 15% improvement above baseline, coming out to 65%. However, the model’s ability to correctly classify the `Accept` class is effectively high at 95% specificity. The ROC Curve calculates an AUC (area under the curve) score of ~64%, so model performance is quite low. Moreover, the ROC Curve below shows that as the true positive rate increases, so does the false positive rate, so, for every increase in the false positive rate, there is a greater increase in false alarms.**
+
+<p align="center">
+
+<img src="https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-47-1.png">
+
+</p>
+
 
