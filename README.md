@@ -207,6 +207,60 @@ Build an ordered logit model for the full four categories for performance. When 
 
 </center>
 
+**The respective probabilities that individual two will be in each of the four performance categories are:**
 
-
-The respective probabilities that individual two will be in each of the four performance categories are:
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-7g6k">Individual #</th>
+    <th class="tg-tsde">PerfScoreID=1</th>
+    <th class="tg-tsde">PerfScoreID=2</th>
+    <th class="tg-tsde">PerfScoreID=3</th>
+    <th class="tg-tsde">PerfScoreID=4</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-3xi5">1</td>
+    <td class="tg-3xi5">0.0151</td>
+    <td class="tg-3xi5">0.0289</td>
+    <td class="tg-3xi5">0.7297</td>
+    <td class="tg-3xi5">0.2263</td>
+  </tr>
+  <tr>
+    <td class="tg-5w3z">2</td>
+    <td class="tg-5w3z">0.0472</td>
+    <td class="tg-5w3z">0.0824</td>
+    <td class="tg-5w3z">0.7875</td>
+    <td class="tg-5w3z">0.0829</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">3</td>
+    <td class="tg-3xi5">0.0478</td>
+    <td class="tg-3xi5">0.0833</td>
+    <td class="tg-fux6"><span style="color:#333">0</span>.7870</td>
+    <td class="tg-3xi5">0.0819</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">4</td>
+    <td class="tg-3xi5">0.0818</td>
+    <td class="tg-3xi5">0.1295</td>
+    <td class="tg-3xi5">0.7409</td>
+    <td class="tg-3xi5">0.0478</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">5</td>
+    <td class="tg-3xi5">0.0151</td>
+    <td class="tg-3xi5">0.0289</td>
+    <td class="tg-3xi5">0.7297</td>
+    <td class="tg-3xi5">0.2263</td>
+  </tr>
+  <tr>
+    <td class="tg-3xi5">6</td>
+    <td class="tg-3xi5">0.0268</td>
+    <td class="tg-3xi5">0.0496</td>
+    <td class="tg-3xi5">0.7837</td>
+    <td class="tg-3xi5">0.1399</td>
+  </tr>
+</tbody>
+</table>
