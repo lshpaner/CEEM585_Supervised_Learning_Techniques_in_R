@@ -1,4 +1,4 @@
-## Supervised Learning Techniques Course Project
+# Supervised Learning Techniques Course Project
 
 ## Table of Contents
 1. [Part One - Building A Model](#building-a-model)  
@@ -9,6 +9,7 @@
 ## Part One
 ### Building A Model
 
+## Instructions
 In this project, you will: 
 - Use linear discriminant analysis.  
 - Build a logit model and an ordered logit model.  
