@@ -277,3 +277,26 @@ the model created above and the `pred()` function.
 The arguments for that function are the model name, data and for type use “raw”. This question is parallel to the Practice using Naïve Bayes activity you completed in R.  
 
 </li>
+
+**The probability that individual 10 will evolve into each of the four probability classes if hired is as follows:**  
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-7g6k"></th>
+    <th class="tg-7g6k">Class 1</th>
+    <th class="tg-7g6k">Class 2</th>
+    <th class="tg-7g6k">Class 3</th>
+    <th class="tg-7g6k">Class 4</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-7rxw">Probability</td>
+    <td class="tg-af47">0.00009999</td>
+    <td class="tg-x5q1">0.16248375</td>
+    <td class="tg-x5q1">0.63743626</td>
+    <td class="tg-x5q1">0.19998000</td>
+  </tr>
+</tbody>
+</table>
