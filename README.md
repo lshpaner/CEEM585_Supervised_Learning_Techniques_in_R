@@ -1,8 +1,10 @@
 ## Supervised Learning Techniques Course Project
 
 ## Table of Contents
-[Part One - Building A Model](#building-a-model)  
-[Part Two - Using Naïve Bayes To Predict a Performance Score ](#using-naïve-bayes-to-predict-a-performance-score)
+1. [Part One - Building A Model](#building-a-model)  
+2. [Part Two - Using Naïve Bayes To Predict a Performance Score ](#using-naïve-bayes-to-predict-a-performance-score)  
+3. [Building Classification Trees](#building-classification-trees)  
+4. [Applying SVM to a Data Set](#applying-svm-to-a-data-set)
 
 ## Part One
 ### Building A Model
