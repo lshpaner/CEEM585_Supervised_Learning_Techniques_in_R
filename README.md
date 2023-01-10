@@ -340,3 +340,7 @@ In the space below, explain the model you developed. It is sufficient to use the
 
 </center>
 
+<p align ="center">
+
+<img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-29-1.png">
+</p>
