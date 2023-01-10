@@ -223,3 +223,48 @@ In this part of the project, you will use Naïve Bayes to predict a performance 
 Using only the mechanical aptitude score, use Naïve Bayes to predict the performance score for each employee. Professor Nozick discretized the mechanical scores into four classes. Notice only three of four classes have observations. This discretization is in the data file `NaiveBayesHW.csv`. The function to create the model is `naiveBayes()`.  
 
 </li>
+
+<center>
+
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:fit-content;border-width:.1em .1em .1em .8em;padding:.0em .0em;"><pre style="margin: 0; text-align: left; line-height: 125%"><span style="color: #000000">Naive Bayes Classifier for Discrete Predictors</span>
+
+<span style="color: #000000">Call:</span>
+<span style="color: #000000">naiveBayes.default(x = X, y = Y, laplace = laplace)</span>
+
+<span style="color: #000000">A-priori probabilities:</span>
+<span style="color: #000000">Y</span>
+<span style="color: #000000">    Class1     Class2     Class3     Class4 </span>
+<span style="color: #000000">0.04145078 0.06735751 0.76683938 0.12435233 </span>
+
+<span style="color: #000000">Conditional probabilities:</span>
+<span style="color: #000000">        MechanicalApt</span>
+<span style="color: #000000">Y           Level1    Level3    Level4</span>
+<span style="color: #000000">  Class1 1.0000000 0.0000000 0.0000000</span>
+<span style="color: #000000">  Class2 0.0000000 0.0000000 1.0000000</span>
+<span style="color: #000000">  Class3 0.0000000 0.6554054 0.3445946</span>
+<span style="color: #000000">  Class4 0.0000000 0.3333333 0.0000007</span>
+
+<span style="color: #000000">            Class1       Class2     Class3      Class4</span>
+<span style="color: #000000"> [1,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000"> [2,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000"> [3,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000"> [4,] 9.773977e-01 0.0015882712 0.01808186 0.002932193</span>
+<span style="color: #000000"> [5,] 9.773977e-01 0.0015882712 0.01808186 0.002932193</span>
+<span style="color: #000000"> [6,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000"> [7,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000"> [8,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000"> [9,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[10,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[11,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000">[12,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000">[13,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[14,] 7.617524e-05 0.0001237848 0.92362480 0.076175241</span>
+<span style="color: #000000">[15,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[16,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[17,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[18,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[19,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+<span style="color: #000000">[20,] 9.999000e-05 0.1624837516 0.63743626 0.199980002</span>
+</pre></div>
+
+</center>
