@@ -158,7 +158,7 @@ class_balance(feat = hr_data$CollapseScore, title = 'HR by Class',
 ```
 
 <li> Explain the variables you decided to use in the model described above and why. </li>
-
+<br>
 **The employee’s hiring status <font color="black"> ``EmpStatusID`` </font> in conjunction with the employee’s satisfaction <font color="black"> ``EmpSatisfaction`` </font> and average aptitude score were used in the model.**
 
 **Averaging the mechanical and verbal scores row over row creates a new <font color="black"> ``Aptitude`` </font> column with these values. Mechanical and verbal aptitude scores are omitted because of their high between-predictor relationships. <font color="black"> ``MechanicalApt`` </font> vs. <font color="black"> ``VerbalApt`` </font> yields an *r* = 0.96. Once the scores are averaged and passed into one column, the problem of multicollinearity is removed. <font color="black"> ``Termd`` </font> is also omitted because its correlation with <font color="black"> ``EmpStatusID`` </font> is *r* = 0.96.**
@@ -273,6 +273,8 @@ plot3 <- correl_plot(hr_data_final, xvar = hr_data_final$Aptitude,
 # plot all correlations together
 plot_grid(plot1, plot2, plot3, labels = 'AUTO', ncol = 3, align = '')
 ```
+
+<br>
 **Fitting the linear discriminant analysis model produces the following results.**
 
 ```{r}
@@ -296,7 +298,7 @@ If you want to compare what your model says verses whether they were found to be
 
 **A generalized linear model is fitted accordingly, a column of predictions is appended to the dataframe, and a cutoff value is determined accordingly. Individual 5 has unacceptable/unsatisfactory performance, and the model predicts the same with a probability of 0.471, which is below the cutoff of 0.737.**
 
-```{r, results = 'asis'}
+```{r}
 # Fit a regression model
 reg_model <- lm(Score ~ EmpStatusID + EmpSatisfaction + Aptitude, 
                 data = hr_data_final)
@@ -320,11 +322,13 @@ pandoc.table(head(cbind_hrdatafinal), style = 'simple', split.table = Inf)
 ```
 
 4.	Construct a logit model using the two performance groups. Compare this model and the discriminant analysis done in step 1. To construct the logit model, use the function `lrm()` in the library rms. 
+<br>
 
 ```{r}
 # Construct a logit model using the two performance groups
 logit <- lrm(Score ~ MechanicalApt + VerbalApt, data = hr_data); logit
 ```
+
 **The linear discriminant analysis model does not use mechanical aptitude and/or verbal aptitude as standalone independent variables. The scores are averaged to create one column for general aptitude.**
 
 <li> Build an ordered logit model for the full four categories for performance. When you call the function `lrm()` you will use the original categories `PerScoreID`.  What is the probability that individual two is in each of the four performance categories? You can use the function `predict()` to do this. The form of the call is `predict(name of the model you used when you created the model, data=frame, type=”fitted.ind”)` </li>
@@ -501,7 +505,9 @@ str(acquisition) # obtain the structure of the dataframe
 ```{r, fig.height = 10, fig.width=8}
 nearzerohist(acquisition[c(-12)], x = 4, y = 3)
 ```
-**Inspecting the dataframe for near zero variance predictors from a visual standpoint alone identifies current market value <font color="black"> ``CurMarketValue`` </font> to be a variable that exhibits such behavior. However, the <font color = "black"> ``nearZeroVar`` </font> function from the <font color="black"> ``caret`` </font> library does not expose such variables. Near zero variance measures the fraction of unique values in the columns across the dataset.**
+<br>
+
+**Inspecting the dataframe for near zero variance predictors from a visual standpoint alone identifies current market value <font color="black"> ``CurMarketValue`` </font> to be a variable that exhibits such behavior. However, the <font color = "black"> ``nearZeroVar`` </font> function from the <font color="black"> ``caret`` </font> library does not expose such variables. Near zero variance measures the fraction of unique values in the columns across the dataset.**  
 
 **Moreover, the correlation matrix does not expose any sources of high between-predictor relationships (beyond the cutoff point of *r* = 0.75). This relegates the variable selection process to Principal Component Analysis (PCA), but this is a dimensionality reduction technique; there are only 12 variables and 1,531 rows of data.**
 

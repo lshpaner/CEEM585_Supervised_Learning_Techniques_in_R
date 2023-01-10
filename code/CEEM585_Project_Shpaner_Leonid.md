@@ -237,7 +237,7 @@ Explain the variables you decided to use in the model described above
 and why.
 </li>
 
-**The employee’s hiring status <font color="black"> `EmpStatusID`
+<br> **The employee’s hiring status <font color="black"> `EmpStatusID`
 </font> in conjunction with the employee’s satisfaction
 <font color="black"> `EmpSatisfaction` </font> and average aptitude
 score were used in the model.**
@@ -389,8 +389,9 @@ plot_grid(plot1, plot2, plot3, labels = 'AUTO', ncol = 3, align = '')
     ## `geom_smooth()` using formula = 'y ~ x'
 
 <img src="figs/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
-**Fitting the linear discriminant analysis model produces the following
-results.**
+
+<br> **Fitting the linear discriminant analysis model produces the
+following results.**
 
 ``` r
 par(mar = c(4, 2, 0, 0)) # fix plot margins
@@ -476,8 +477,8 @@ cat(' Mean of Satisfactory Results =', meansat, '\n',
     'Mean of Unsatisfactory Results =', meanunsat, '\n')
 ```
 
-Mean of Satisfactory Results = 0.9340495 Mean of Unsatisfactory Results
-= 0.540166
+    ##  Mean of Satisfactory Results = 0.9340495 
+    ##  Mean of Unsatisfactory Results = 0.540166
 
 ``` r
 # determine the cutoff value
@@ -485,26 +486,28 @@ cutoff <- 0.5*(meanunsat + meansat)
 cat(' Cutoff Value =', cutoff)
 ```
 
-Cutoff Value = 0.7371078
+    ##  Cutoff Value = 0.7371078
 
 ``` r
 cbind_hrdatafinal <- cbind(hr_data_final, pred)
 pandoc.table(head(cbind_hrdatafinal), style = 'simple', split.table = Inf)
 ```
 
-| EmpStatusID | EmpSatisfaction | CollapseScore | Score | Aptitude |  pred  |
-|:-----------:|:---------------:|:-------------:|:-----:|:--------:|:------:|
-|      1      |        5        |  Acceptable   |   1   |  180.9   | 1.315  |
-|      1      |        3        |  Acceptable   |   1   |  106.7   | 0.7863 |
-|      5      |        4        |  Acceptable   |   1   |  152.3   | 1.104  |
-|      1      |        2        | Unacceptable  |   0   |  46.99   | 0.3852 |
-|      1      |        5        | Unacceptable  |   0   |  41.87   | 0.4715 |
-|      1      |        4        |  Acceptable   |   1   |  131.6   | 0.9764 |
+    ## 
+    ## 
+    ##  EmpStatusID   EmpSatisfaction   CollapseScore   Score   Aptitude    pred  
+    ## ------------- ----------------- --------------- ------- ---------- --------
+    ##       1               5           Acceptable       1      180.9     1.315  
+    ##       1               3           Acceptable       1      106.7     0.7863 
+    ##       5               4           Acceptable       1      152.3     1.104  
+    ##       1               2          Unacceptable      0      46.99     0.3852 
+    ##       1               5          Unacceptable      0      41.87     0.4715 
+    ##       1               4           Acceptable       1      131.6     0.9764
 
 4.  Construct a logit model using the two performance groups. Compare
     this model and the discriminant analysis done in step 1. To
     construct the logit model, use the function `lrm()` in the library
-    rms.
+    rms. <br>
 
 ``` r
 # Construct a logit model using the two performance groups
@@ -999,6 +1002,8 @@ nearzerohist(acquisition[c(-12)], x = 4, y = 3)
     ## [1] "There are no near-zero variance predictors."
 
 <img src="figs/unnamed-chunk-31-1.png" style="display: block; margin: auto;" />
+<br>
+
 **Inspecting the dataframe for near zero variance predictors from a
 visual standpoint alone identifies current market value
 <font color="black"> `CurMarketValue` </font> to be a variable that
