@@ -175,3 +175,38 @@ Construct a logit model using the two performance groups. Compare this model and
 Build an ordered logit model for the full four categories for performance. When you call the function `lrm()` you will use the original categories `PerScoreID`. What is the probability that individual two is in each of the four performance categories? You can use the function `predict()` to do this. The form of the call is `predict(name of the model you used when you created the model, data=frame, type=”fitted.ind”)`.  
 
 </li> 
+
+<center>
+
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:fit-content;border-width:.1em .1em .1em .8em;padding:.0em .0em;"><pre style="margin: 0; text-align: left; line-height: 125%"><span style="color: #000000">Logistic Regression Model</span>
+<span style="color: #000000"> </span>
+<span style="color: #000000"> lrm(formula = PerfScoreID ~ Termd + EmpStatusID + EmpSatisfaction, </span>
+<span style="color: #000000">     data = hr_data)</span>
+<span style="color: #000000"> </span>
+<span style="color: #000000"> </span>
+<span style="color: #000000"> Frequencies of Responses</span>
+<span style="color: #000000"> </span>
+<span style="color: #000000">   1   2   3   4 </span>
+<span style="color: #000000">   8  13 148  24 </span>
+<span style="color: #000000"> </span>
+<span style="color: #000000">                       Model Likelihood      Discrimination    Rank Discrim.    </span>
+<span style="color: #000000">                             Ratio Test             Indexes          Indexes    </span>
+<span style="color: #000000"> Obs           193    LR chi2     12.13      R2       0.077    C       0.634    </span>
+<span style="color: #000000"> max |deriv| 8e-09    d.f.            3      R2(3,193)0.046    Dxy     0.268    </span>
+<span style="color: #000000">                      Pr(&gt; chi2) 0.0070    R2(3,105.5)0.083    gamma   0.298    </span>
+<span style="color: #000000">                                             Brier    0.086    tau-a   0.105    </span>
+<span style="color: #000000"> </span>
+<span style="color: #000000">                 Coef    S.E.   Wald Z Pr(&gt;|Z|)</span>
+<span style="color: #000000"> y&gt;=2             1.0880 0.9065  1.20  0.2300  </span>
+<span style="color: #000000"> y&gt;=3            -0.0130 0.8869 -0.01  0.9883  </span>
+<span style="color: #000000"> y&gt;=4            -4.3212 0.9741 -4.44  &lt;0.0001 </span>
+<span style="color: #000000"> Termd           -1.2239 1.1992 -1.02  0.3075  </span>
+<span style="color: #000000"> EmpStatusID      0.1560 0.3152  0.49  0.6208  </span>
+<span style="color: #000000"> EmpSatisfaction  0.5872 0.2086  2.81  0.0049  </span>
+</pre></div>
+
+</center>
+
+
+
+The respective probabilities that individual two will be in each of the four performance categories are:
