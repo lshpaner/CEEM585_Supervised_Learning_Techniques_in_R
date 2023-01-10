@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 
-# ignore all .Rmd files
+# ignore .Rmd file(s)
 *.Rmd
