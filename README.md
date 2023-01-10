@@ -1,7 +1,7 @@
 ## Supervised Learning Techniques Course Project
 
 ## Table of Contents
-[Part One - Building A Model](###Building A Model)
+[Part One - Building A Model](#building-a-model)
 
 ## Part One
 ### Building A Model
