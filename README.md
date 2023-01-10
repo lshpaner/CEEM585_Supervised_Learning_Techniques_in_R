@@ -147,4 +147,25 @@ Construct a logit model using the two performance groups. Compare this model and
 
 </li>
 
+<center> 
+
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:fit-content;border-width:.1em .1em .1em .8em;padding:.0em .0em;"><pre style="margin: 0; text-align: left; line-height: 125%"><span style="color: #000000">Logistic Regression Model</span>
+<span style="color: #000000"> </span>
+<span style="color: #000000"> lrm(formula = Score ~ MechanicalApt + VerbalApt, data = hr_data)</span>
+<span style="color: #000000"> </span>
+<span style="color: #000000">                        Model Likelihood     Discrimination    Rank Discrim.    </span>
+<span style="color: #000000">                              Ratio Test            Indexes          Indexes    </span>
+<span style="color: #000000"> Obs           193    LR chi2     109.40     R2       0.870    C       0.991    </span>
+<span style="color: #000000">  0             21    d.f.             2     R2(2,193)0.427    Dxy     0.983    </span>
+<span style="color: #000000">  1            172    Pr(&gt; chi2) &lt;0.0001    R2(2,56.1)0.852    gamma   0.983    </span>
+<span style="color: #000000"> max |deriv| 3e-06                           Brier    0.017    tau-a   0.192    </span>
+<span style="color: #000000"> </span>
+<span style="color: #000000">               Coef     S.E.    Wald Z Pr(&gt;|Z|)</span>
+<span style="color: #000000"> Intercept     -33.7121 11.5108 -2.93  0.0034  </span>
+<span style="color: #000000"> MechanicalApt   0.4697  0.1689  2.78  0.0054  </span>
+<span style="color: #000000"> VerbalApt      -0.0865  0.0743 -1.16  0.2443  </span>
+</pre></div>
+
+</center>
+
 
