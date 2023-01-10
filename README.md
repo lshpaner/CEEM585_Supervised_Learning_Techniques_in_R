@@ -390,7 +390,7 @@ How good was your model at correctly predicting who would and who would not acce
 
 <font color="blue"> The confusion matrix is used to obtain the first effective measure of model performance (accuracy) using the following equation. </font>
 
-$$\text{Accuracy} = \frac{TP} + \text{TN}}{\text{TP}+\text{TN}+\text{FP}+\text{FN}$$
+$$\text{Accuracy} = \frac{TP + \text{TN}}{\text{TP}+\text{TN}+\text{FP}+\text{FN}}$$
 <font color="blue"> Precision (specificity) measures out of everyone who accepted a government offer to purchase their home, how many actually accepted? It is calculated as follows. </font>
 
 $$\text{Precision} = \frac{\text{TP}}{\text{TP}+\text{FP}}$$
