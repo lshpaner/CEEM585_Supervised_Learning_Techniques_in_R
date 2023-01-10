@@ -4,4 +4,4 @@
 .Ruserdata
 
 # ignore all .Rmd files
-/*.Rmd
+/code/*.Rmd
