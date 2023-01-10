@@ -390,13 +390,13 @@ How good was your model at correctly predicting who would and who would not acce
 
 <font color="blue"> The confusion matrix is used to obtain the first effective measure of model performance (accuracy) using the following equation. </font>
 
-$$\text{Accuracy} = \frac{TP + TN}{TP+TN+FP+FN}$$
+$$Accuracy = \frac{TP + TN}{TP+TN+FP+FN}$$
 <font color="blue"> Precision (specificity) measures out of everyone who accepted a government offer to purchase their home, how many actually accepted? It is calculated as follows. </font>
 
-$$\text{Precision} = \frac{TP}{TP+FP}$$
+$$Precision = \frac{TP}{TP+FP}$$
 <font color="blue"> Recall (sensitivity) measures the true positive rate (TPR), which is the number of correct predictions in the <font color="black"> ``Accept`` </font> class divided by the total number of <font color="black"> ``Accept`` </font> instances. It is calculated as follows: </font>
 
-$$\text{Recall} = \frac{TP}{TP+FN}$$
+$$Recall = \frac{TP}{TP+FN}$$
 <font color="blue"> The *f1*-score is the harmonic mean of precision and recall, and is calculated as follows: </font>
 
 $$f1 = \frac{TP}{TP+\frac{1}{2}{(FP+FN)}}$$
