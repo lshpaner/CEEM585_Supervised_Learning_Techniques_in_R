@@ -300,3 +300,18 @@ The arguments for that function are the model name, data and for type use “raw
   </tr>
 </tbody>
 </table>
+
+</ol>
+
+## Part Three
+### Building Classification Trees
+
+In this part of the project, you will build classification trees. This part continues the scenario from Parts One and Two, as it uses the same modified version of the human resources data set available on the Kaggle website. Use the `HRdata4groups.csv` data set to predict each individual's performance (Performance Score ID) using classification trees. In the space below, you will explain the model you have developed and describe how well it performs.
+
+<ol start="1">
+
+<li>  
+
+In the space below, explain the model you developed. It is sufficient to use the function `ctree()` in R to accomplish this in the style of the codio exercise Practice: Building a Classification Tree in R—Small Example.  
+
+</li>
