@@ -141,6 +141,8 @@ If you want to compare what your model says verses whether they were found to be
 
 **Individual 5 has unacceptable/unsatisfactory performance, and the model predicts the same with a probability of 0.471, which is below the cutoff of 0.737.**
 
-<li> Construct a logit model using the two performance groups. Compare this model and the discriminant analysis done in step 1. To construct the logit model, use the function `lrm()` in the library rms. </li>
+<li> 
+Construct a logit model using the two performance groups. Compare this model and the discriminant analysis done in step 1. To construct the logit model, use the function `lrm()` in the library rms. 
+</li>
 
 
