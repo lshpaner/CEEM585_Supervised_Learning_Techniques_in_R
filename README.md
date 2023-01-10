@@ -355,5 +355,20 @@ In the space below, describe how well your model performs.
 
 **Whenever a `CollapseScore` is greater than 0, employee performance is classified as acceptable or satisfactory. This, under this umbrella category, aptitude scores less than or equal to 154.50 reach a node level of 3.052, with an error of 7.6, where *n* = 154 observations. Aptitude scores greater than 154.50 reach a higher node level of 3.89, where there are *n* = 18 observations, and a lower error rate of 1.8.** 
 
-**There are three inner nodes and four terminal nodes, with a correct classification of data points at approximately 11%. The performance is low, and this model warrants iterative refinement.** 
+**There are three inner nodes and four terminal nodes, with a correct classification of data points at approximately 11%. The performance is low, and this model warrants iterative refinement.**
+
+</ol>
+
+## Part Four
+### Applying SVM to a Data Set
+
+In this part of the project, you will apply SVM to a data set. The RStudio instance contains the file `acquisitionacceptanceSVM.csv`, which includes information about whether or not homeowners accepted a government offer to purchase their home. 
+
+<ol start="1"> 
+
+<li>  
+
+Apply the tool SVM to the acquisition data set in the CSV file `acquisitionacceptanceSVM.csv` to predict which homeowners will most likely accept the government’s offer. What variables did you choose to use in your analysis? 
+
+</li>
 
