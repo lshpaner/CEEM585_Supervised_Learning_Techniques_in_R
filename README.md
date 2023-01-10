@@ -372,3 +372,14 @@ Apply the tool SVM to the acquisition data set in the CSV file `acquisitionaccep
 
 </li>
 
+**Inspecting the dataframe for near zero variance predictors from a visual standpoint alone identifies current market value (`CurMarketValue`) to be a variable that exhibits such behavior.  However, the `nearZeroVar()` function from the caret library does not expose such variables. Near zero variance measures the fraction of unique values in the columns across the dataset. Moreover, the correlation matrix does not expose any sources of high between-predictor relationships (beyond the cutoff point of *r* = 0.75). This relegates the variable selection process to Principal Component Analysis (PCA), but this is a dimensionality reduction technique; there are only 12 variables and 1,531 rows of data.** 
+
+**Casting the target (Accept) variable to a factor is done to categorize the data. There are enough rows in this dataset to carry out a train-test split, and so it is done, with 70% partitioned into the training set, and the remaining 30% into the test set. The `e1071` package does not allow for a printout of variable importance varImp for feature selection, the caret package is used to accomplish this task. The model’s cost and kernel hyperparameters are tuned over the training data with a 10-fold cross validation sampling method. `Price75` and `Price125` are the top two variables surpassing a score of 80 in importance and are thus selected for the soft-margin support vector machine.**
+
+<p align="center">
+
+<img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-40-1.png">
+
+</p>
+
+
