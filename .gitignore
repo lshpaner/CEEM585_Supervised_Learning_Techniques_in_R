@@ -5,3 +5,6 @@
 
 # ignore .Rmd file(s)
 *.Rmd
+
+# ignore cache folders
+/CEEM585_Project_Shpaner_Leonid_cache/gfm
