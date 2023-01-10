@@ -409,4 +409,12 @@ $$f1 = \frac{TP}{TP+\frac{1}{2}{(FP+FN)}}$$
 
 </p>
 
+<li> 
+
+When building models, we often use part of the data to estimate the model and use the remainder for prediction. Why do we do this? It is not necessary to do this for each of the problems above. It is essential to realize that you will need to do this in practice.
+
+</li>
+
+**We are interested in seeing how the model performs on unseen data. Thus, we partition the data into a train-test split. Ideally, there are enough rows of data to conduct a three-way train-validation-test split such that the train-validation set becomes the development set. However, we are working with a smaller amount of data, so we are using a two-way split, where the training set (development set) is the larger portion of data (70-80%), and the remaining 30% is allocated to the test set. Anything can be done repeatedly to the development set (e.g., iteration, hyperparameterization, experimentation, etc.), as long as the test set remains uncontaminated (unseen). Once the model is finalized through the training set, it can be predicted on the remaining test set.**
+
 
