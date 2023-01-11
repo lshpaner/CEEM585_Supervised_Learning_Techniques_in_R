@@ -349,7 +349,7 @@ In the space below, explain the model you developed. It is sufficient to use the
 
 <p align ="center">
 
-<img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-29-1.png">
+<img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-30-1.png">
 </p>
 
 <li> 
@@ -385,7 +385,7 @@ Apply the tool SVM to the acquisition data set in the CSV file `acquisitionaccep
 
 <p align="center">
 
-<img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-40-1.png">
+<img src = "https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-41-1.png">
 
 </p>
 
@@ -412,7 +412,7 @@ $$f1 = \frac{TP}{TP+\frac{1}{2}{(FP+FN)}}$$
 
 <p align="center">
 
-<img src="https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-47-1.png">
+<img src="https://github.com/lshpaner/CEEM585_Supervised_Learning_Techniques_in_R/blob/main/code/figs/unnamed-chunk-48-1.png">
 
 </p>
 
