@@ -1323,8 +1323,7 @@ $$Precision = \frac{TP}{TP+FP}$$ **Recall (sensitivity) measures the
 true positive rate (TPR), which is the number of correct predictions in
 the <font color="black"> `Accept` </font> class divided by the total
 number of <font color="black"> `Accept` </font> instances. It is
-calculated as follows:**  
-<br>
+calculated as follows:**
 
 $$Recall = \frac{TP}{TP+FN}$$ **The *f1*-score is the harmonic mean of
 precision and recall, and is calculated as follows:**
