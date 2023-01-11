@@ -1435,6 +1435,8 @@ legend(0.73, 0.2, legend = paste('AUC =', rev(auc)), lty = c(1), col = c('red'))
 
 <img src="figs/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
 
+<br>
+
 <li>
 When building models, we often use part of the data to estimate the
 model and use the remainder for prediction. Why do we do this? It is not
