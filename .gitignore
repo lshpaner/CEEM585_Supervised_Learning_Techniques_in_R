@@ -6,5 +6,8 @@
 # ignore .Rmd file(s)
 *.Rmd
 
+# ignore .Rproj file
+*.Rproj
+
 # ignore cache folder(s)
 /code/CEEM585_Project_Shpaner_Leonid_cache
