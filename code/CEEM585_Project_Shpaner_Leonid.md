@@ -1,4 +1,4 @@
-Supervised Learning Techniques Course Project
+Supervised Learning Techniques in R - Course Project
 ================
 Leonid Shpaner - January 1, 2023
 
