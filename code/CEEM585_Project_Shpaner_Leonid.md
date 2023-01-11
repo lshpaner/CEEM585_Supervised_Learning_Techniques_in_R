@@ -81,6 +81,7 @@ employee. You may assume that the verbal and mechanical scores will be
 available at the point where a decision about hiring is to be made. In
 this question, please give us the linear discriminate model you have
 developed.
+
 </li>
 
 **The dataset is inspected and the categorical classes of
@@ -148,12 +149,18 @@ Table continues below
 hr_data_numeric <- subset(hr_data, select = -c(EmpID, CollapseScore, Score))
 ```
 
+``` r
+getwd()
+```
+
+    ## [1] "C:/Users/lshpaner/Documents/GitHub Repositories/CEEM585_Supervised_Learning_Techniques_in_R/data"
+
 **The histogram distributions below do not yield or uncover any
 near-zero-variance predictors, but it is worth noting that
 <font color="black"> `Termd` </font> has only two class labels.
-<font color="black"> `MechanicalApt` </font> and <font color="black">
-`VerbalApt` </font> exhibit normality; other variables approach the same
-trend. </font>**
+<font color="black"> `MechanicalApt` </font> and
+<font color="black">`VerbalApt` </font> exhibit normality; other
+variables approach the same trend. </font>**
 
 ``` r
 # create function for plotting histograms to check for near-zero variance 
@@ -185,7 +192,7 @@ nearzerohist <- function(df, x, y) {
 nearzerohist(hr_data_numeric, x = 2, y = 3) 
 ```
 
-<img src="figs/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
     ## [1] "There are no near-zero variance predictors."
 
@@ -209,7 +216,6 @@ class_balance <- function(feat, title, x, y) {
    feat_table <- table(unname(feat)) # generate table for column
    
    # fix plot margins
-   par(mfrow = c(1, 1)) # fix plotting space from prior graph
    par(mar = c (2, 2, 2, 1)) 
       # plot the counts (values) of each respective class on barplot
    barplot(feat_table, main = title, space = c(0), horiz = FALSE,
@@ -226,7 +232,7 @@ class_balance(feat = hr_data$CollapseScore, title = 'HR by Class',
                  x = 'Acceptable', y = 'Unacceptable')
 ```
 
-<img src="figs/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
     ## 
     ##   Acceptable Unacceptable 
@@ -240,7 +246,7 @@ and why.
 <br> **The employee’s hiring status <font color="black"> `EmpStatusID`
 </font> in conjunction with the employee’s satisfaction
 <font color="black"> `EmpSatisfaction` </font> and average aptitude
-score were used in the model.**
+score are used in the model.**
 
 **Averaging the mechanical and verbal scores row over row creates a new
 <font color="black"> `Aptitude` </font> column with these values.
@@ -258,7 +264,7 @@ problem of multicollinearity is removed. <font color="black"> `Termd`
 multicollinearity <- function(df) {
   
       # Examine between predictor correlations/multicollinearity
-      corr <- cor(df)
+      corr <- cor(df, use = 'pairwise.complete.obs')
       corrplot(corr, mar = c(0, 0, 0, 0), method = 'color', 
                      col = colorRampPalette(c('#FC0320', '#FFFFFF', 
                                               '#FF0000'))(100), 
@@ -282,7 +288,7 @@ multicollinearity <- function(df) {
 multicollinearity(hr_data[c(1:7)])
 ```
 
-<img src="figs/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
     ##  The following variables should be omitted: 
     ##  VerbalApt 
@@ -321,7 +327,7 @@ barplot(vif_values, main = 'VIF Values', horiz = FALSE, col = 'steelblue',
 abline(h = 5, lwd = 3, lty = 2)   
 ```
 
-<img src="figs/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 ``` r
 # create average score since result of both scores creates multicollinearity
@@ -387,10 +393,11 @@ plot_grid(plot1, plot2, plot3, labels = 'AUTO', ncol = 3, align = '')
     ## `geom_smooth()` using formula = 'y ~ x'
     ## `geom_smooth()` using formula = 'y ~ x'
 
-<img src="figs/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<br>
 
-<br> **Fitting the linear discriminant analysis model produces the
-following results.**
+**Fitting the linear discriminant analysis model produces the following
+results.**
 
 ``` r
 par(mar = c(4, 2, 0, 0)) # fix plot margins
@@ -421,7 +428,7 @@ lda_fit <- lda(Score ~  EmpStatusID + EmpSatisfaction + Aptitude,
 plot(lda_fit) # plot the lda model
 ```
 
-<img src="figs/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
 <li>
 
@@ -472,12 +479,13 @@ pred <- predict(reg_model, hr_data_final)
 # and satisfactory employees
 meanunsat <- mean(pred[hr_data_final$Score == 0]) 
 meansat <- mean(pred[hr_data_final$Score == 1]) 
-cat(' Mean of Satisfactory Results =', meansat, '\n', 
-    'Mean of Unsatisfactory Results =', meanunsat, '\n')
+cat(' Mean of Satisfactory Results = ', meansat, '\n', 
+    '\n Mean of Unsatisfactory Results =', meanunsat, '\n')
 ```
 
-    ##  Mean of Satisfactory Results = 0.9340495 
-    ##  Mean of Unsatisfactory Results = 0.540166
+Mean of Satisfactory Results = 0.9340495
+
+Mean of Unsatisfactory Results = 0.540166
 
 ``` r
 # determine the cutoff value
@@ -485,28 +493,31 @@ cutoff <- 0.5*(meanunsat + meansat)
 cat(' Cutoff Value =', cutoff)
 ```
 
-    ##  Cutoff Value = 0.7371078
+Cutoff Value = 0.7371078
 
 ``` r
 cbind_hrdatafinal <- cbind(hr_data_final, pred)
 pandoc.table(head(cbind_hrdatafinal), style = 'simple', split.table = Inf)
 ```
 
-    ## 
-    ## 
-    ##  EmpStatusID   EmpSatisfaction   CollapseScore   Score   Aptitude    pred  
-    ## ------------- ----------------- --------------- ------- ---------- --------
-    ##       1               5           Acceptable       1      180.9     1.315  
-    ##       1               3           Acceptable       1      106.7     0.7863 
-    ##       5               4           Acceptable       1      152.3     1.104  
-    ##       1               2          Unacceptable      0      46.99     0.3852 
-    ##       1               5          Unacceptable      0      41.87     0.4715 
-    ##       1               4           Acceptable       1      131.6     0.9764
+| EmpStatusID | EmpSatisfaction | CollapseScore | Score | Aptitude |  pred  |
+|:-----------:|:---------------:|:-------------:|:-----:|:--------:|:------:|
+|      1      |        5        |  Acceptable   |   1   |  180.9   | 1.315  |
+|      1      |        3        |  Acceptable   |   1   |  106.7   | 0.7863 |
+|      5      |        4        |  Acceptable   |   1   |  152.3   | 1.104  |
+|      1      |        2        | Unacceptable  |   0   |  46.99   | 0.3852 |
+|      1      |        5        | Unacceptable  |   0   |  41.87   | 0.4715 |
+|      1      |        4        |  Acceptable   |   1   |  131.6   | 0.9764 |
 
-4.  Construct a logit model using the two performance groups. Compare
-    this model and the discriminant analysis done in step 1. To
-    construct the logit model, use the function `lrm()` in the library
-    rms. <br>
+<br>
+
+<li>
+Construct a logit model using the two performance groups. Compare this
+model and the discriminant analysis done in step 1. To construct the
+logit model, use the function `lrm()` in the library rms.
+</li>
+
+<br>
 
 ``` r
 # Construct a logit model using the two performance groups
@@ -585,17 +596,63 @@ pred_ologit <- predict(ologit, data = hr_data, type = 'fitted.ind')
 
 ``` r
 # inspect the dataframe
-pandoc.table(head(pred_ologit), style = 'simple', split.table = Inf, round = 4) 
+pandoc.table(head(pred_ologit), style = 'grid', split.table = Inf, round = 4) 
 ```
 
-| PerfScoreID=1 | PerfScoreID=2 | PerfScoreID=3 | PerfScoreID=4 |
-|:-------------:|:-------------:|:-------------:|:-------------:|
-|    0.0151     |    0.0289     |    0.7297     |    0.2263     |
-|    0.0472     |    0.0824     |    0.7875     |    0.0829     |
-|    0.0477     |    0.0833     |     0.787     |    0.0819     |
-|    0.0818     |    0.1295     |    0.7409     |    0.0478     |
-|    0.0151     |    0.0289     |    0.7297     |    0.2263     |
-|    0.0268     |    0.0496     |    0.7837     |    0.1399     |
+<table style="width:89%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PerfScoreID=1</th>
+<th>PerfScoreID=2</th>
+<th>PerfScoreID=3</th>
+<th>PerfScoreID=4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.0151</td>
+<td>0.0289</td>
+<td>0.7297</td>
+<td>0.2263</td>
+</tr>
+<tr class="even">
+<td>0.0472</td>
+<td>0.0824</td>
+<td>0.7875</td>
+<td>0.0829</td>
+</tr>
+<tr class="odd">
+<td>0.0477</td>
+<td>0.0833</td>
+<td><pre><code>0.787</code></pre></td>
+<td>0.0819</td>
+</tr>
+<tr class="even">
+<td>0.0818</td>
+<td>0.1295</td>
+<td>0.7409</td>
+<td>0.0478</td>
+</tr>
+<tr class="odd">
+<td>0.0151</td>
+<td>0.0289</td>
+<td>0.7297</td>
+<td>0.2263</td>
+</tr>
+<tr class="even">
+<td>0.0268</td>
+<td>0.0496</td>
+<td>0.7837</td>
+<td>0.1399</td>
+</tr>
+</tbody>
+</table>
 
 ``` r
 # get predictions only for second individual
@@ -608,7 +665,7 @@ plot(individual2, type = 'l', main = 'Predictions for Individual 2',
      xlab = 'Category', ylab = 'Probability')
 ```
 
-<img src="figs/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
 
 ``` r
 pandoc.table(individual2, style = 'simple', split.table = Inf, round = 4)
@@ -839,7 +896,8 @@ cat(' The following variables should be omitted: \n', paste(unlist(highCorr)))
 **<font color="black"> `VerbalApt` </font> exhibits multicollinearity,
 so it is averaged with <font color="black"> `MechanicalApt` </font>,
 just like in part one. A replacement column called <font color="black">
-Aptitude </font> is once again created on this refined dataset.**
+`Aptitude` </font> is once again created on this refined dataset.
+</font> </font>**
 
 ``` r
 # create aptitude from averaged MechanicalApt and VerbalApt scores
@@ -901,7 +959,7 @@ cat('Correct Classification of Data Point:',
 plot(ctout) # plot the classification tree
 ```
 
-<img src="figs/unnamed-chunk-29-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-30-1.png" style="display: block; margin: auto;" />
 
 <li>
 In the space below, describe how well your model performs.
@@ -1000,7 +1058,7 @@ nearzerohist(acquisition[c(-12)], x = 4, y = 3)
 
     ## [1] "There are no near-zero variance predictors."
 
-<img src="figs/unnamed-chunk-31-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-32-1.png" style="display: block; margin: auto;" />
 <br>
 
 **Inspecting the dataframe for near zero variance predictors from a
@@ -1019,11 +1077,10 @@ Analysis (PCA), but this is a dimensionality reduction technique; there
 are only 12 variables and 1,531 rows of data.**
 
 ``` r
-par(mfrow = c(1, 1)) # fix plotting space from prior graph
 multicollinearity(acquisition)
 ```
 
-<img src="figs/unnamed-chunk-32-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-33-1.png" style="display: block; margin: auto;" />
 
     ##  The following variables should be omitted: 
     ## 
@@ -1069,13 +1126,14 @@ target <- train_acquisition[, c(12)] # extract dep. var. from train set
 target <- as.factor(target) # cast target as factor
 ```
 
-**Since the <font color="black"> `e1071` </black> package does not allow
+**Since the <font color="black"> `e1071` </font> package does not allow
 for a printout of variable importance (<font color="black"> `varImpt()`
 </font>) for feature selection, the <font color="black"> `caret` </font>
 package is used to accomplish this task, and the results are shown
-below. `Price75` and `Price125` are the top two variables surpassing a
-score of 80 in importance and are thus selected for the soft-margin
-support vector machine.**
+below. <font color="black"> `Price75` </font> and <font color="black">
+`Price125` </font> are the top two variables surpassing a score of 80 in
+importance and are thus selected for the soft-margin support vector
+machine.**
 
 ``` r
 # Support Vector Machines via caret
@@ -1087,17 +1145,17 @@ ggplot2::ggplot(varImp(object = model_svm)) +
   ggtitle('SVM - Variable Importance') + 
   scale_y_continuous(expand = c(0, 0)) +
   theme_classic() +
-  theme(plot.margin = unit(c(0, 1, 0, 0), 'cm')) +
+  theme(plot.margin = unit(c(1, 1, 0, 0), 'cm')) +
   theme(axis.text = element_text(color = 'black'),
         axis.title = element_text(color = 'black'))
 ```
 
-<img src="figs/unnamed-chunk-36-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-37-1.png" style="display: block; margin: auto;" />
 <br>
 
 **The model’s cost and kernel hyperparameters are tuned over the
 training data with a 10-fold cross validation sampling method. The
-optimal hyperparameter values are shown in table below.**
+optimal hyperparameter values are shown in table below. </font>**
 
 ``` r
 train_df <- train_acquisition[, c(8, 11, 12)]
@@ -1199,7 +1257,7 @@ print(acquisition_result)
 plot(acquisition_result, data = train_df)
 ```
 
-<img src="figs/unnamed-chunk-40-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-41-1.png" style="display: block; margin: auto;" />
 
 ``` r
 # create function for outputting a confusion matrix in a pandoc-style format
@@ -1215,7 +1273,7 @@ conf_matrix <- function (df1, df2, feat, x, y, custom_name) {
     prediction <- predict(df1, newdata = df2)
     # Evaluate the model on the training data and inspect first six rows
     pred_table <- table(prediction, feat)
-    # print out pander-style table with performance results
+    # print out pander-grid-style table with performance results
     metrics <- c(x, y)
     h0 <- c(pred_table[1], pred_table[2])
     h1 <- c(pred_table[3], pred_table[4])
@@ -1257,22 +1315,20 @@ Confusion Matrix for Test Set
 **The confusion matrix is used to obtain the first effective measure of
 model performance (accuracy) using the following equation.**
 
-$$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP}+\text{TN}+\text{FP}+\text{FN}}$$
-**Precision (specificity) measures out of everyone who accepted a
-government offer to purchase their home, how many actually accepted? It
-is calculated as follows.**
+$$Accuracy = \frac{TP + TN}{TP+TN+FP+FN}$$ **Precision (specificity)
+measures out of everyone who accepted a government offer to purchase
+their home, how many actually accepted? It is calculated as follows.**
 
-$$\text{Precision} = \frac{\text{TP}}{\text{TP}+\text{FP}}$$ **Recall
-(sensitivity) measures the true positive rate (TPR), which is the number
-of correct predictions in the <font color="black"> `Accept` </font>
-class divided by the total number of <font color="black"> `Accept`
-</font> instances. It is calculated as follows:**
+$$Precision = \frac{TP}{TP+FP}$$ **Recall (sensitivity) measures the
+true positive rate (TPR), which is the number of correct predictions in
+the <font color="black"> `Accept` </font> class divided by the total
+number of <font color="black"> `Accept` </font> instances. It is
+calculated as follows:**
 
-$$\text{Recall} = \frac{\text{TP}}{\text{TP}+\text{FN}}$$ **The
-*f1*-score is the harmonic mean of precision and recall, and is
-calculated as follows:** <br>
+$$Recall = \frac{TP}{TP+FN}$$ **The *f1*-score is the harmonic mean of
+precision and recall, and is calculated as follows:**
 
-$$f1 = \frac{\text{TP}}{\text{TP}+\frac{1}{2}\text{(FP+FN)}}$$
+$$f1 = \frac{TP}{TP+\frac{1}{2}{(FP+FN)}}$$
 
 ``` r
 # 
@@ -1303,7 +1359,7 @@ perf_metrics <- function(df1, df2, feat, custom_name) {
    sens <- round((tp) / (tp + fn),2) # calculate sensitivity (recall)
    f1 <- round((tp) / (tp+0.5*(fp+fn)),2) # calculate f1-score
 
-   # print out pander-style table with performance results
+   # print out pander-grid-style table with performance results
    metrics <- c('Accuracy', 'Specificity', 'Sensitivity', 'F1-Score')
    values <- c(accuracy, spec, sens, f1)
    table <- data.frame(Metric = metrics, Value = values)
@@ -1377,7 +1433,7 @@ abline(0, 1, col = 'black', lty = 2, lwd = 1)
 legend(0.73, 0.2, legend = paste('AUC =', rev(auc)), lty = c(1), col = c('red'))
 ```
 
-<img src="figs/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
+<img src="figs/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
 
 <li>
 When building models, we often use part of the data to estimate the
