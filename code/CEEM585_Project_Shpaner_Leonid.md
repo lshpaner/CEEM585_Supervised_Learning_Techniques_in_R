@@ -596,63 +596,17 @@ pred_ologit <- predict(ologit, data = hr_data, type = 'fitted.ind')
 
 ``` r
 # inspect the dataframe
-pandoc.table(head(pred_ologit), style = 'grid', split.table = Inf, round = 4) 
+pandoc.table(head(pred_ologit), style = 'simple', split.table = Inf, round = 4) 
 ```
 
-<table style="width:89%;">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 22%" />
-<col style="width: 22%" />
-<col style="width: 22%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>PerfScoreID=1</th>
-<th>PerfScoreID=2</th>
-<th>PerfScoreID=3</th>
-<th>PerfScoreID=4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.0151</td>
-<td>0.0289</td>
-<td>0.7297</td>
-<td>0.2263</td>
-</tr>
-<tr class="even">
-<td>0.0472</td>
-<td>0.0824</td>
-<td>0.7875</td>
-<td>0.0829</td>
-</tr>
-<tr class="odd">
-<td>0.0477</td>
-<td>0.0833</td>
-<td><pre><code>0.787</code></pre></td>
-<td>0.0819</td>
-</tr>
-<tr class="even">
-<td>0.0818</td>
-<td>0.1295</td>
-<td>0.7409</td>
-<td>0.0478</td>
-</tr>
-<tr class="odd">
-<td>0.0151</td>
-<td>0.0289</td>
-<td>0.7297</td>
-<td>0.2263</td>
-</tr>
-<tr class="even">
-<td>0.0268</td>
-<td>0.0496</td>
-<td>0.7837</td>
-<td>0.1399</td>
-</tr>
-</tbody>
-</table>
+| PerfScoreID=1 | PerfScoreID=2 | PerfScoreID=3 | PerfScoreID=4 |
+|:-------------:|:-------------:|:-------------:|:-------------:|
+|    0.0151     |    0.0289     |    0.7297     |    0.2263     |
+|    0.0472     |    0.0824     |    0.7875     |    0.0829     |
+|    0.0477     |    0.0833     |     0.787     |    0.0819     |
+|    0.0818     |    0.1295     |    0.7409     |    0.0478     |
+|    0.0151     |    0.0289     |    0.7297     |    0.2263     |
+|    0.0268     |    0.0496     |    0.7837     |    0.1399     |
 
 ``` r
 # get predictions only for second individual
