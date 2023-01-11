@@ -1073,7 +1073,9 @@ target <- as.factor(target) # cast target as factor
 for a printout of variable importance (<font color="black"> `varImpt()`
 </font>) for feature selection, the <font color="black"> `caret` </font>
 package is used to accomplish this task, and the results are shown
-below.**
+below. `Price75` and `Price125` are the top two variables surpassing a
+score of 80 in importance and are thus selected for the soft-margin
+support vector machine.**
 
 ``` r
 # Support Vector Machines via caret
@@ -1095,10 +1097,7 @@ ggplot2::ggplot(varImp(object = model_svm)) +
 
 **The model’s cost and kernel hyperparameters are tuned over the
 training data with a 10-fold cross validation sampling method. The
-optimal hyperparameter values are shown in table below. `Price75` and
-`Price125` are the top two variables surpassing a score of 80 in
-importance and are thus selected for the soft-margin support vector
-machine.**
+optimal hyperparameter values are shown in table below.**
 
 ``` r
 train_df <- train_acquisition[, c(8, 11, 12)]
