@@ -258,8 +258,7 @@ problem of multicollinearity is removed. <font color="black"> `Termd`
 multicollinearity <- function(df) {
   
       # Examine between predictor correlations/multicollinearity
-      corr_data <- df # select only independent var.
-      corr <- cor(corr_data)
+      corr <- cor(df)
       corrplot(corr, mar = c(0, 0, 0, 0), method = 'color', 
                      col = colorRampPalette(c('#FC0320', '#FFFFFF', 
                                               '#FF0000'))(100), 
@@ -354,11 +353,11 @@ Score and Employee Status ID where *r* = -0.067.**
 #         title: plot title, xlab: x-axis label, ylab: y-axis label
 correl_plot <- function(df, xvar, yvar, title, xlab, ylab) {
   
-   ggplot(df, aes(x = xvar, y = yvar))+
+   ggplot(df, aes(x = xvar, y = yvar)) +
    ggtitle(title) +
    xlab(xlab) + ylab(ylab) +
    geom_point(pch = 1) + ylim(0, 1.25) +
-   geom_smooth(method = 'lm', se = FALSE)+
+   geom_smooth(method = 'lm', se = FALSE) +
    theme_classic() +
    stat_cor(method = 'pearson', label.x = 0.15, label.y = 0.20) # correl coeff. 
   
@@ -1084,11 +1083,11 @@ model_svm  <- train(predictors, target, method = 'svmLinear', verbose = FALSE)
 svm_varimp <- varImp(object = model_svm)
 ggplot2::ggplot(varImp(object = model_svm)) + 
   ggtitle('SVM - Variable Importance') + 
-  scale_y_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   theme_classic() +
-  theme(plot.margin = unit(c(0,1,0,0), "cm")) +
-  theme(axis.text=element_text(color="black"),
-        axis.title=element_text(color="black"))
+  theme(plot.margin = unit(c(0, 1, 0, 0), 'cm')) +
+  theme(axis.text = element_text(color = 'black'),
+        axis.title = element_text(color = 'black'))
 ```
 
 <img src="figs/unnamed-chunk-36-1.png" style="display: block; margin: auto;" />
